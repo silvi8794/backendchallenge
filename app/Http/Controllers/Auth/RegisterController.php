@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\ApiController;
 
 use App\User as ModelsUser;
 
-class RegisterController extends Controller
+class RegisterController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
@@ -90,10 +91,11 @@ class RegisterController extends Controller
                      
                 ]);             
                
-                 return response()->json( $user, 201); 
+                // return response()->json( $user, 201); 
+                 return $this->showOne($user, 201);
     }
         else {
-             return response()->json(['El mail ya existe']);
+                 return $this->errorResponse('El mail ya existe', 401);
          }
     }
         catch (\Exception $e) {

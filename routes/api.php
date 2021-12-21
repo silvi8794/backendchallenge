@@ -17,9 +17,12 @@ use Illuminate\Http\Request;
     return $request->user();
 }); */
 
- Route::resource('projects', 'ProjectController');
+ //Route::resource('projects', 'ProjectController');
 
-// Route::post('projects', 'ProjectController@store');
-// Route::put('projects', 'ProjectController@update{id}');
+ Route::post('projects', 'ProjectController@store')->middleware(['auth']);
+ Route::delete('projects', 'ProjectController@destroy')->middleware(['auth']);
+//Route::put('projects', 'ProjectController@update{id}')->middleware(['auth']);;
 
 Route::post('register', 'Auth\RegisterController@register');
+
+Route::post('login', 'Auth\LoginController@login');
