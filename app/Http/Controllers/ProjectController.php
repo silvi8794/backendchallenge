@@ -17,7 +17,7 @@ class ProjectController extends ApiController
         
     }
 
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {    
 
          $rules = [

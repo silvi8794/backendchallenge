@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+use App\User as ModelsUser;
 
 class RegisterController extends Controller
 {
@@ -22,6 +25,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    public $loginAfterSignUp = true;
 
     /**
      * Where to redirect users after registration.
@@ -69,4 +73,32 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function register(Request $request)
+    {
+        try {
+            
+            $userExist = User::where('email', $request->email)->first();
+
+             if (is_null($userExist)){
+                
+                 
+                 $user = ModelsUser::create([
+                     'name'                 => $request->name,
+                     'email'                 =>  $request->email,
+                     'password'              =>  Hash::make($request->password),
+                     
+                ]);             
+               
+                 return response()->json( $user, 201); 
+    }
+        else {
+             return response()->json(['El mail ya existe']);
+         }
+    }
+        catch (\Exception $e) {
+            return response()-> json($e);
+        }
+    }
+
 }

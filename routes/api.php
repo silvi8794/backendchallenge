@@ -13,8 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
 
-Route::resource('projects', 'ProjectController');
+ Route::resource('projects', 'ProjectController');
+
+// Route::post('projects', 'ProjectController@store');
+// Route::put('projects', 'ProjectController@update{id}');
+
+Route::post('register', 'Auth\RegisterController@register');
