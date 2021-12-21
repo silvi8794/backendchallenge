@@ -7,8 +7,36 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 use App\Http\Controllers\ApiController;
 
+/**
+* @OA\Info(title="API Proyectos", version="1.0")
+*
+* @OA\Server(url="http://swagger.local")
+*/
+
 class ProjectController extends ApiController
 {
+
+/**
+    * @OA\Get(
+    *     path="/api/projects",
+    *     summary="Mostrar proyectos",
+    *     @OA\Response(
+    *         response=200,
+    *         description="Mostrar todos los proyectos."
+    *     ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="Ha ocurrido un error."
+    *     )
+    * )
+    */
+    public function index()
+    {
+        $projects = Project::all();
+        return $this->showAll($projects);
+    
+    }
+
     public function store(ProjectRequest $request)
     {
         $data = $request->all();
@@ -17,7 +45,7 @@ class ProjectController extends ApiController
         
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {    
 
          $rules = [

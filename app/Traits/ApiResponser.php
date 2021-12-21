@@ -33,10 +33,10 @@ Trait ApiResponser
     //es decir, una coleccion, por ej. cuando se retorna la lista de todos los alumnos
     protected function showAll(Collection $collection, $code = 200)
     {
-        if ($collection->isEmpty()){
+        
 
             return $this->successResponse([ 'data' => $collection], $code);
-        }
+        
         
     }
 

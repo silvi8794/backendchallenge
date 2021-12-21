@@ -91,10 +91,10 @@ class RegisterController extends ApiController
                      
                 ]);             
                
-                // return response()->json( $user, 201); 
+                
                  return $this->showOne($user, 201);
-    }
-        else {
+          }
+        else{
                  return $this->errorResponse('El mail ya existe', 401);
          }
     }
