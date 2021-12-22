@@ -293,6 +293,31 @@
                     }
                 ]
             }
+        },
+        "/api/buscar/?name={name}": {
+            "get": {
+                "summary": "Busca proyectos por nombres",
+                "description": "Permite realizar una búsqueda por nombre de proyecto. ",
+                "operationId": "b56c09979f8e87ffddc098701639c03a",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "example": "Proyecto"
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {

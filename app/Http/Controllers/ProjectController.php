@@ -39,8 +39,9 @@ class ProjectController extends ApiController
     */
     public function index()
     {
-        $projects = Project::all();
-        return $this->showAll($projects);
+        
+        $projects = Project::paginate(5);
+        return $projects;
     
     }
         /** 
@@ -180,4 +181,42 @@ class ProjectController extends ApiController
         return $this->showOne($project, 201);
         
     }
+
+        /** 
+    * @OA\Get(
+    *     path="/api/buscar/?name={name}",
+    *     @OA\Parameter(
+    *        in= "path",
+    *        name= "name",
+    *         example="Proyecto",
+    *         required= true
+    *       ),
+    *     summary="Busca proyectos por nombres",
+    *     description="Permite realizar una búsqueda por nombre de proyecto. ",
+    *   @OA\Response(
+    *         response=401,
+    *         description="Ha ocurrido un error."
+    *     ),
+    *   security={{"apiAuth":{} }}
+    * )
+    */
+    public function buscar(Request $request)
+    {
+
+        $project = Project::query();
+
+         if(!is_null($request->name)) {
+        $project->orWhere("name", "LIKE", "%{$request->name}%");
+         }
+
+        if (!is_null($request->start_at)) {
+            $project->orWhere('start_at', '>=', $request->start_at);
+        }
+
+        if (!is_null($request->end_at)) {
+            $project->orWhere('end_at', '<=', $request->end_at);
+        }
+
+        return $project->get();
+}
 }

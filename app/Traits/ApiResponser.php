@@ -30,19 +30,18 @@ Trait ApiResponser
 
     //*---Metodo showAll
     //Metodo encargado de mostrar una respuesta con multiples elementos,
-    //es decir, una coleccion, por ej. cuando se retorna la lista de todos los alumnos
+    //es decir, una coleccion, por ej. cuando se retorna la lista de todos los proyectos
     protected function showAll(Collection $collection, $code = 200)
     {
         
-
-            return $this->successResponse([ 'data' => $collection], $code);
+         return $this->successResponse([ 'data' => $collection], $code);
         
         
     }
 
     //*---Metodo showOne
     //Metodo encargado de mostrar una respuesta con una instancia especifica 
-    //de un Modelo, por ej. cuando retornamos una instancia de un curso existente
+    //de un Modelo, por ej. cuando retornamos una instancia de un proyecto existente
     protected function showOne(Model $instance, $code = 200)
     {
 
