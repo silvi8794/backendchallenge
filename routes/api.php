@@ -19,13 +19,6 @@ use Illuminate\Http\Request;
 
  Route::resource('projects', 'ProjectController')->middleware(['auth']);
 
-/*  Route::post('projects', 'ProjectController@store')->middleware(['auth']);
- Route::delete('projects', 'ProjectController@destroy')->middleware(['auth']);
- Route::get('projects', 'ProjectController@index'); */
-//Route::put('projects', 'ProjectController@update{id}')->middleware(['auth']);;
-
 Route::post('register', 'Auth\RegisterController@register');
-
-
 
 Route::post('login', 'Auth\LoginController@login');

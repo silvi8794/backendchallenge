@@ -10,13 +10,19 @@ use App\Http\Controllers\ApiController;
 /**
 * @OA\Info(title="API Proyectos", version="1.0")
 *
-* @OA\Server(url="http://swagger.local")
+* @OA\Server(url="http://localhost:8000/")
 */
 
 class ProjectController extends ApiController
 {
 
-/**
+/**    @OA\SecurityScheme(
+    *     type="http",
+    *     in="header",
+    *     scheme="bearer",
+    *     bearerFormat="JWT",
+    *     securityScheme="apiAuth",
+    *     )
     * @OA\Get(
     *     path="/api/projects",
     *     summary="Mostrar proyectos",
@@ -27,7 +33,8 @@ class ProjectController extends ApiController
     *     @OA\Response(
     *         response="default",
     *         description="Ha ocurrido un error."
-    *     )
+    *     ),
+    *     security={{"apiAuth":{} }}
     * )
     */
     public function index()
@@ -36,7 +43,28 @@ class ProjectController extends ApiController
         return $this->showAll($projects);
     
     }
-
+        /** 
+    * @OA\Post(
+    *     path="/api/projects",
+    *     summary="Nuevo proyecto",
+    *     description="Crea un nuevo proyecto",
+    *    @OA\RequestBody(
+     *         required=true,
+     *         description="Datos del nuevo proyecto",
+     *      @OA\JsonContent(
+     *              required={"name","description","status"},
+     *              @OA\Property(property="name", type="string", format="text", example="Proyecto laravel"),
+     *              @OA\Property(property="description", type="string", format="text", example="This project runs with Laravel version 5.7"),
+     *              @OA\Property(property="status", type="string", format="text", example="enabled"),
+     *           ),
+     *  ),
+    *   @OA\Response(
+    *         response=401,
+    *         description="Ha ocurrido un error."
+    *     ),
+    *   security={{"apiAuth":{} }}
+    * )
+    */
     public function store(ProjectRequest $request)
     {
         $data = $request->all();
@@ -44,6 +72,34 @@ class ProjectController extends ApiController
         return $this->showOne($project, 201);
         
     }
+
+            /** 
+    * @OA\Patch(
+    *     path="/api/projects/{id}",
+    *  @OA\Parameter(
+    *        in= "path",
+    *        name= "id",
+    *         example= 2,
+    *         required= true
+    *       ),
+    *     summary="Actualiza proyecto",
+    *     description="Actualiza un proyecto existente",
+    *    @OA\RequestBody(
+     *         required=true,
+     *         description="Datos a modificar del proyecto",
+     *      @OA\JsonContent(
+     *              @OA\Property(property="name", type="string", format="text", example="Proyecto Nodejs"),
+     *              @OA\Property(property="description", type="string", format="text", example="This project runs with NodeJS"),
+     *              @OA\Property(property="status", type="string", format="text", example="enabled"),
+     *           ),
+     *  ),
+    *   @OA\Response(
+    *         response=401,
+    *         description="Ha ocurrido un error."
+    *     ),
+    *   security={{"apiAuth":{} }}
+    * )
+    */
 
     public function update(Request $request, Project $project)
     {    
@@ -76,7 +132,24 @@ class ProjectController extends ApiController
 
 
     }
-
+        /** 
+    * @OA\Delete(
+    *     path="/api/projects/{id}",
+    *     @OA\Parameter(
+    *        in= "path",
+    *        name= "id",
+    *         example= 1,
+    *         required= true
+    *       ),
+    *     summary="Elimina un proyecto",
+    *     description="Elimina un proyecto existente",
+    *   @OA\Response(
+    *         response=401,
+    *         description="Ha ocurrido un error."
+    *     ),
+    *   security={{"apiAuth":{} }}
+    * )
+    */
     public function destroy($id){
 
         $project = Project::where('id', '=', $id)->firstOrFail();

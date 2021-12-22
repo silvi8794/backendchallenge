@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Controllers\ApiController;
 
 /**
-* @OA\Info(title="API Proyectos", version="1.0")
+* [@OA\Info(title="API Proyectos", version="1.0")]
 *
-* @OA\Server(url="http://swagger.local")
+* @OA\Server(url="http://localhost:8000/")
 */
-
 class LoginController extends ApiController
 {
     /*
@@ -30,38 +29,19 @@ class LoginController extends ApiController
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
-
 
     /**
      * @OA\Post(
-     * path="/api/login",
-     * summary="Sign in",
-     * description="Login con email, password",,
-     * @OA\RequestBody(
-     *    required=true,
-     *    description="Pasar credenciales de usuario",
+     *     path="/api/login",
+     *     summary="Sign in",
+     *     description="Login con email, password",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Pasar credenciales de usuario",
      *    @OA\JsonContent(
      *       required={"email","password"},
-     *       @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
-     *       @OA\Property(property="password", type="string", format="password", example="PassWord12345"),
-     *       @OA\Property(property="persistent", type="boolean", example="true"),
+     *       @OA\Property(property="email", type="string", format="email", example="pao@gmail.com"),
+     *       @OA\Property(property="password", type="string", format="password", example="12345678"),
      *    ),
      * ),
      * @OA\Response(

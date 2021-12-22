@@ -11,7 +11,11 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\ApiController;
 
 use App\User as ModelsUser;
-
+/**
+* [@OA\Info(title="API Proyectos", version="1.0")]
+*
+* @OA\Server(url="http://localhost:8000/")
+*/
 class RegisterController extends ApiController
 {
     /*
@@ -74,6 +78,31 @@ class RegisterController extends ApiController
             'password' => Hash::make($data['password']),
         ]);
     }
+
+       /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Sign up",
+     *     description="Registra un usuario",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Datos del usuario",
+     *    @OA\JsonContent(
+     *       required={"name","email","password"},
+     *       @OA\Property(property="name", type="string", format="text", example="Marina"),
+     *       @OA\Property(property="email", type="string", format="email", example="marina@gmail.com"),
+     *       @OA\Property(property="password", type="string", format="password", example="12345678"),
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="El email ya existe",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Error, el email ya existe")
+     *        )
+     *     )
+     * )
+     */ 
 
     public function register(Request $request)
     {
