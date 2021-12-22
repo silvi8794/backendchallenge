@@ -3,7 +3,8 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    RewriteEngine On
+    RewriteEngine on
+    RewriteRule index\.html index.php [NC,R]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
