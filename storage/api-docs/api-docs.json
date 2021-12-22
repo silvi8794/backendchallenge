@@ -196,6 +196,29 @@
             }
         },
         "/api/projects/{id}": {
+            "get": {
+                "summary": "Muestra un proyecto",
+                "description": "Muestra un proyecto existente /id",
+                "operationId": "af32aed47c19d517816e0b970d60cd5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "example": 3
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "summary": "Elimina un proyecto",
                 "description": "Elimina un proyecto existente",

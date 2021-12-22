@@ -156,4 +156,28 @@ class ProjectController extends ApiController
         $project->delete();
         return $this->showOne($project, 201);
     }
+        /** 
+    * @OA\Get(
+    *     path="/api/projects/{id}",
+    *     @OA\Parameter(
+    *        in= "path",
+    *        name= "id",
+    *         example= 3,
+    *         required= true
+    *       ),
+    *     summary="Muestra un proyecto",
+    *     description="Muestra un proyecto existente /id",
+    *   @OA\Response(
+    *         response=401,
+    *         description="Ha ocurrido un error."
+    *     ),
+    *   security={{"apiAuth":{} }}
+    * )
+    */
+    public function show($id)
+    {
+        $project = Project::where('id', '=', $id)->firstOrFail();
+        return $this->showOne($project, 201);
+        
+    }
 }
