@@ -26,5 +26,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme("https");
+        }
     }
 }
