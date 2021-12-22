@@ -25,8 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
-
-        parent::boot();
+        //
     }
 }
