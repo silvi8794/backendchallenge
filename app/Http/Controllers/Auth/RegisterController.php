@@ -14,7 +14,7 @@ use App\User as ModelsUser;
 /**
 * [@OA\Info(title="API Proyectos", version="1.0")]
 *
-* @OA\Server(url="https://estoes-challenge-laravel.herokuapp.com/")
+* @OA\Server(url="http://localhost:8000/")
 */
 class RegisterController extends ApiController
 {
