@@ -6,15 +6,15 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8000/",
+            "url": "https://backendchallenge-estoes.herokuapp.com/",
             "description": "[@OA\\Info(title=\"API Proyectos\", version=\"1.0\")]"
         },
         {
-            "url": "http://localhost:8000/",
+            "url": "https://backendchallenge-estoes.herokuapp.com/",
             "description": "[@OA\\Info(title=\"API Proyectos\", version=\"1.0\")]"
         },
         {
-            "url": "http://localhost:8000/"
+            "url": "https://backendchallenge-estoes.herokuapp.com/"
         }
     ],
     "paths": {
