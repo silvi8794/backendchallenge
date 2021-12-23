@@ -12,7 +12,7 @@ use App\Http\Controllers\ApiController;
 
 use App\User as ModelsUser;
 /**
-* [@OA\Info(title="API Proyectos", version="1.0")]
+* [@OA\Info(title="Challenge Backend Laravel", version="1.0")]
 *
 * @OA\Server(url="https://backendchallenge-estoes.herokuapp.com/")
 */

@@ -8,7 +8,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Http\Controllers\ApiController;
 
 /**
-* @OA\Info(title="API Proyectos", version="1.0")
+* @OA\Info(title="Challenge Backend Laravel", version="1.0")
 *
 * @OA\Server(url="https://backendchallenge-estoes.herokuapp.com/")
 */

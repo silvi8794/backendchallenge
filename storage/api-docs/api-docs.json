@@ -7,11 +7,11 @@
     "servers": [
         {
             "url": "https://backendchallenge-estoes.herokuapp.com/",
-            "description": "[@OA\\Info(title=\"API Proyectos\", version=\"1.0\")]"
+            "description": "[@OA\\Info(title=\"Challenge Backend Laravel\", version=\"1.0\")]"
         },
         {
             "url": "https://backendchallenge-estoes.herokuapp.com/",
-            "description": "[@OA\\Info(title=\"API Proyectos\", version=\"1.0\")]"
+            "description": "[@OA\\Info(title=\"Challenge Backend Laravel\", version=\"1.0\")]"
         },
         {
             "url": "https://backendchallenge-estoes.herokuapp.com/"
